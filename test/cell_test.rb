@@ -56,5 +56,10 @@ class CellTest < MiniTest::Test
     assert_equal "M", @cell_1.render
   end
 
+  def test_render_and_optional_argument
+    @cell_2.place_ship(@cruiser)
+    assert_equal '.', @cell_2.render
+    assert_equal "S", @cell_2.render(true)
+  end
 
 end
