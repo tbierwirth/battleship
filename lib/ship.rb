@@ -1,5 +1,3 @@
-#require "/cell"
-
 class Ship
 
   attr_reader :name, :length, :health, :guess, :cell_choice, :location
@@ -11,10 +9,12 @@ class Ship
     @location = location
     @hits = 0
     @health = length
+    @hit_counter = 0
   end
 
   def hit
-      @health -= 1
+    @health -= 1
+    @hit_counter += 1
   end
 
   def sunk?
