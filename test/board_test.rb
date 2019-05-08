@@ -24,6 +24,10 @@ class BoardTest < MiniTest::Test
 
   def test_valid_cell_coordinates
     assert_equal true, @board.valid_coordinate?("A1")
+    assert_equal true, @board.valid_coordinate?("D4")
+    assert_equal false, @board.valid_coordinate?("A5")
+    assert_equal false, @board.valid_coordinate?("E1")
+    assert_equal false, @board.valid_coordinate?("A22")
   end
 
 end
