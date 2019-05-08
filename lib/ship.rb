@@ -1,4 +1,4 @@
-#require "/cell"
+require "/cell"
 
 class Ship
 

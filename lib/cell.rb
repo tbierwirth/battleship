@@ -27,21 +27,18 @@ class Cell
       @ship.hit
     end
   end
-  #
-  # def render
-  #   if fired_upon?
-  #     "M"
-  #   elsif fired_upon?
-  #     "H"
-  #   elsif @ship
-  #     "S"
-  #   elsif @ship.sunk?
-  #     "X"
-  #   else
-  #     "."
-  #   end
-  # end
-# Hey this render method might by in the right order. We can talk about it tomorrow.
-# The tests are solid enough for a good grade for the purposes of the project. 
 
+  def render
+    if fire_upon? == true && empty? == true
+      "M"
+    elsif fire_upon? == false && empty? == true
+      "H"
+    elsif @ship
+      "S"
+    elsif @ship.sunk?
+      "X"
+    else
+      "."
+    end
+  end
 end
