@@ -4,7 +4,6 @@ class Cell
 
   def initialize(coordinate)
     @coordinate = coordinate
-    @ship = ship
     @fired_upon = false
   end
 
@@ -22,20 +21,19 @@ class Cell
 
   def fire_upon
     @fired_upon = true
-    if empty?
-    else
+    if empty? == false
       @ship.hit
     end
   end
 
-  def render
-    if fired_upon?
+  def render(player = false)
+    if fired_upon? == true && empty? == true
       "M"
-    elsif fired_upon?
+    elsif fired_upon? == true && empty? == false && @ship.sunk? == false
       "H"
-    elsif @ship
+    elsif fired_upon? == false && empty? == false  && player == true
       "S"
-    elsif @ship.sunk?
+    elsif fired_upon? == true && empty? == false && @ship.sunk? == true
       "X"
     else
       "."
@@ -43,5 +41,3 @@ class Cell
   end
 
 end
-# Hey this render method might by in the right order. We can talk about it tomorrow.
-# The tests are solid enough for a good grade for the purposes of the project.

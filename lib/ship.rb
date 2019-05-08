@@ -7,7 +7,6 @@ class Ship
     @length = length
     #@guess = gets.chomp
     @location = location
-    @hits = 0
     @health = length
     @hit_counter = 0
   end
