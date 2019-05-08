@@ -46,23 +46,15 @@ class CellTest < MiniTest::Test
     assert @cell_1.fired_upon?
   end
 
-  # def test_if_ship_has_been_fired_upon
-  #   @cell.place_ship(@ship)
-  #   @cell.fire_upon
-  #
-  #   assert_equal true, @cell.fired_upon?
-  #   assert_equal 1, @cell.ship.health
-  # end
-  #
-  # def test_if_it_renders
-  #   assert_equal ".", @cell_1.render
-  # end
-  #
-  # def test_if_cell_renders_miss_when_fired_upon
-  #   @cell_1.fire_upon
-  #
-  #   assert_equal "M", @cell_1.render
-  # end
+  def test_if_it_renders
+    assert_equal ".", @cell_1.render
+  end
+
+  def test_if_cell_renders_miss_when_fired_upon
+    @cell_1.fire_upon
+
+    assert_equal "M", @cell_1.render
+  end
 
 
 end
