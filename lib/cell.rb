@@ -25,19 +25,19 @@ class Cell
       @ship.hit
     end
   end
-  #
-  # def render
-  #   if fired_upon?
-  #     "M"
-  #   elsif fired_upon?
-  #     "H"
-  #   elsif @ship
-  #     "S"
-  # #  elsif @ship.sunk?
-  #     "X"
-  #   else
-  #     "."
-  #   end
-  # end
+
+  def render
+    if fired_upon? == true && empty? == true
+      "M"
+    elsif fire_upon
+      "H"
+    elsif @ship
+      "S"
+  #  elsif @ship.sunk?
+      "X"
+    else
+      "."
+    end
+  end
 
 end
