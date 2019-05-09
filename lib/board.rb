@@ -29,6 +29,7 @@ class Board
      "D3" => Cell.new("D3"),
      "D4" => Cell.new("D4")
     }
+
   end
 
   def valid_coordinate?(cell)
@@ -38,6 +39,12 @@ class Board
 
   def valid_placement?(ship, coordinates)
     coordinates.length == ship.length
+  end
+
+  def split_coordinate(*coordinates)
+    coordinates.map do |coordinate|
+      coordinate.split(//)
+    end.flatten
   end
 
 end
