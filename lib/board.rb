@@ -47,4 +47,10 @@ class Board
     end.flatten
   end
 
+  def convert_letters(*letters)
+    letters.map do |letter|
+      letter.ord
+    end
+  end
+
 end
