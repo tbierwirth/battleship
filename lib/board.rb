@@ -4,6 +4,13 @@ class Board
   attr_reader :cells
 
   def initialize
+    # look at .zip and [a, b, c, d] with [1..4]
+    # hsh = {}
+    # ["A1, A2, ... "D4].map do |coord|
+    #   hsh << "A1" => Cell.new("A1")
+    #   hsh << coord => Cell.new(coord)
+    # ("A".."D").to_a +> [A, B, C, D]
+    # end
     @cells = {
      "A1" => Cell.new("A1"),
      "A2" => Cell.new("A2"),
@@ -22,11 +29,16 @@ class Board
      "D3" => Cell.new("D3"),
      "D4" => Cell.new("D4")
     }
+    coordinates = []
   end
 
   def valid_coordinate?(cell)
     coordinate_list = cells.keys
     coordinate_list.include?(cell)
+  end
+
+  def valid_placement?(ship, coordinates)
+    coordinates.length == ship.length
   end
 
 end
