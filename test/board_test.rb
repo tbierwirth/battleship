@@ -50,6 +50,9 @@ class BoardTest < MiniTest::Test
     assert_equal [65, 65, 65], @board.convert_letters("A", "A", "A")
   end
 
+  def test_convert_to_integers
+    assert_equal [1, 2, 3], @board.convert_integers
+  end
 
   # # Make a test for a horizontal placement (Matching letters but consecutive numbers)
   # def test_horizontal_placement_consecutive
