@@ -31,10 +31,10 @@ class BoardTest < MiniTest::Test
 
   def test_valid_cell_coordinates
     assert @board.valid_coordinate?("A1")
-    assert_equal true, @board.valid_coordinate?("D4")
-    assert_equal false, @board.valid_coordinate?("A5")
-    assert_equal false, @board.valid_coordinate?("E1")
-    assert_equal false, @board.valid_coordinate?("A22")
+    assert @board.valid_coordinate?("D4")
+    refute @board.valid_coordinate?("A5")
+    refute @board.valid_coordinate?("E1")
+    refute @board.valid_coordinate?("A22")
   end
 
   def test_ship_length_to_valid_placements
@@ -49,6 +49,7 @@ class BoardTest < MiniTest::Test
   def test_convert_letters_to_ordinals
     assert_equal [65, 65, 65], @board.convert_letters("A", "A", "A")
   end
+
 
   # # Make a test for a horizontal placement (Matching letters but consecutive numbers)
   # def test_horizontal_placement_consecutive
