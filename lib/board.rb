@@ -1,27 +1,50 @@
-# Array.new(4) { Array.new(4,0) } ---- example array for how our 2 dimentional board will work.
+require './lib/cell.rb'
 
 class Board
+  attr_reader :cells
 
-  def initialize()
-    @argument = argument
+  def initialize
+    # look at .zip and [a, b, c, d] with [1..4]
+    # hsh = {}
+    # ["A1, A2, ... "D4].map do |coord|
+    #   hsh << "A1" => Cell.new("A1")
+    #   hsh << coord => Cell.new(coord)
+    # ("A".."D").to_a +> [A, B, C, D]
+    # end
+    @cells = {
+     "A1" => Cell.new("A1"),
+     "A2" => Cell.new("A2"),
+     "A3" => Cell.new("A3"),
+     "A4" => Cell.new("A4"),
+     "B1" => Cell.new("B1"),
+     "B2" => Cell.new("B2"),
+     "B3" => Cell.new("B3"),
+     "B4" => Cell.new("B4"),
+     "C1" => Cell.new("C1"),
+     "C2" => Cell.new("C2"),
+     "C3" => Cell.new("C3"),
+     "C4" => Cell.new("C4"),
+     "D1" => Cell.new("D1"),
+     "D2" => Cell.new("D2"),
+     "D3" => Cell.new("D3"),
+     "D4" => Cell.new("D4")
+    }
+
   end
 
-#   {
-#  "A1" => #<Cell:0x00007ff0728a3f58...>,
-#  "A2" => #<Cell:0x00007ff0728a3ee0...>,
-#  "A3" => #<Cell:0x00007ff0728a3e68...>,
-#  "A4" => #<Cell:0x00007ff0728a3df0...>,
-#  "B1" => #<Cell:0x00007ff0728a3d78...>,
-#  "B2" => #<Cell:0x00007ff0728a3d00...>,
-#  "B3" => #<Cell:0x00007ff0728a3c88...>,
-#  "B4" => #<Cell:0x00007ff0728a3c10...>,
-#  "C1" => #<Cell:0x00007ff0728a3b98...>,
-#  "C2" => #<Cell:0x00007ff0728a3b20...>,
-#  "C3" => #<Cell:0x00007ff0728a3aa8...>,
-#  "C4" => #<Cell:0x00007ff0728a3a30...>,
-#  "D1" => #<Cell:0x00007ff0728a39b8...>,
-#  "D2" => #<Cell:0x00007ff0728a3940...>,
-#  "D3" => #<Cell:0x00007ff0728a38c8...>,
-#  "D4" => #<Cell:0x00007ff0728a3850...>
-# }
+  def valid_coordinate?(cell)
+    coordinate_list = cells.keys
+    coordinate_list.include?(cell)
+  end
+
+  def valid_placement?(ship, coordinates)
+    coordinates.length == ship.length
+  end
+
+  def split_coordinate(*coordinates)
+    coordinates.map do |coordinate|
+      coordinate.split(//)
+    end.flatten
+  end
+
 end
