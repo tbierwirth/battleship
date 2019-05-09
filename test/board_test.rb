@@ -42,8 +42,8 @@ class BoardTest < MiniTest::Test
     refute @board.valid_placement?(@submarine, ["A2", "A3", "A4"])
   end
 
-  def test_coordinate_slice
-    assert_equal ["A", "1"], @board.split_coordinate("A1")
+  def test_coordinate_split
+    assert_equal ["A", "1", "A", "2"], @board.split_coordinate("A1", "A2")
   end
 
   # def test_coordinates_are_consecutive
