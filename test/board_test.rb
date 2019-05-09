@@ -46,6 +46,14 @@ class BoardTest < MiniTest::Test
     assert_equal ["A", "1", "A", "2"], @board.split_coordinate("A1", "A2")
   end
 
+  def test_convert_letters_to_ordinals
+    assert_equal [65, 65, 65], @board.convert_letters("A", "A", "A")
+  end
+
+  # # Make a test for a horizontal placement (Matching letters but consecutive numbers)
+  # def test_horizontal_placement_consecutive
+  # end
+
   # def test_coordinates_are_consecutive
   #   refute @board.valid_placement?(@cruiser, ["A1", "A2", "A4"])
   # end
