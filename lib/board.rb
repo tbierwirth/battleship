@@ -37,7 +37,7 @@ class Board
     coordinate_list.include?(cell)
   end
 
-  def valid_placement?(ship, coordinates)
+  def valid_placement(ship, coordinates)
     coordinates.length == ship.length
   end
 
@@ -52,5 +52,24 @@ class Board
       letter.ord
     end
   end
-
+  # def valid_array_index_placement
+  #     arr = [65, 49, 65, 50, 65, 51]
+  #     p arr[0]
+  #     p arr[2]
+  #     p arr[4]
+  #     if arr[0] && arr[2] == arr[4]
+  #       p 'Yay'
+  #     end
+  #     # def example_m
+  #     #   arr = [65, 49, 65, 50, 65, 51]
+  #     #   arr[1], arr[3], arr[5]
+  #     # end
+  # def index_comp
+  #     arr = [65, 49, 65, 50, 65, 51]
+  #     if (arr[5] - arr[1]) > 1
+  #       p "boo"
+  #     else
+  #       p "yay"
+  #     end
+  # end
 end

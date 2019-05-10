@@ -1,11 +1,9 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'pry'
-
 require './lib/board'
 require './lib/cell'
 require './lib/ship'
-
 class BoardTest < MiniTest::Test
 
   def setup
@@ -53,13 +51,10 @@ class BoardTest < MiniTest::Test
   def test_convert_to_integers
     assert_equal [1, 2, 3], @board.convert_integers
   end
-
-  # # Make a test for a horizontal placement (Matching letters but consecutive numbers)
+  
   # def test_horizontal_placement_consecutive
+  #   assert_equal "yay", @valid_array_index_placement
   # end
 
-  # def test_coordinates_are_consecutive
-  #   refute @board.valid_placement?(@cruiser, ["A1", "A2", "A4"])
-  # end
 
 end
