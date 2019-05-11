@@ -56,4 +56,12 @@ class Board
     end
     numbers.uniq.count == 1
   end
+
+  def letters_consecutive?(coordinates)
+    letters = []
+    coordinates.each do |coordinate|
+      letters << coordinate[0].ord
+    end
+    letters.each_cons(2).all? { |x,y| y == x + 1 }
+  end
 end
