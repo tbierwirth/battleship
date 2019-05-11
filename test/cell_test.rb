@@ -71,7 +71,7 @@ class CellTest < MiniTest::Test
 
     @cruiser.hit
     @cruiser.hit
-
+    
     assert @cruiser.sunk?
     assert_equal 'X', @cell_2.render
   end
