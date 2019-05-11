@@ -64,4 +64,6 @@ class Board
     end
     letters.each_cons(2).all? { |x,y| y == x + 1 }
   end
+
+  
 end
