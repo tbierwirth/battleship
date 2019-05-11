@@ -45,4 +45,9 @@ class BoardTest < MiniTest::Test
     assert @board.letters_same?(coordinates)
   end
 
+  def test_letters_are_different
+    coordinates = ["B2", "A3", "A4"]
+    refute @board.letters_same?(coordinates)
+  end
+
 end

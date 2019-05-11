@@ -37,14 +37,8 @@ class Board
     coordinate_list.include?(cell)
   end
 
-  def valid_placement(ship, coordinates)
-    if valid_coordinate? && coordinates.length == ship.length
-      p "yes"
-    else
-      p "try again"
-      if "yes"
-      end
-    end
+  def valid_placement?(ship, coordinates)
+    coordinates.length == ship.length
   end
 
   def letters_same?(coordinates)
@@ -55,8 +49,4 @@ class Board
     letters.uniq.count == 1
   end
 
-  def numbers_consecutive
-
-
-  end
 end

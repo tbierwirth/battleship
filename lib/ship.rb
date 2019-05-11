@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-require "/cell"
-
-=======
->>>>>>> 201f5ca3ea25a1ac0472dfbc87392ae5fb449446
 class Ship
 
   attr_reader :name, :length, :health, :guess, :cell_choice, :location
