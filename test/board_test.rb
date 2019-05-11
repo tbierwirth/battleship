@@ -78,5 +78,9 @@ class BoardTest < MiniTest::Test
     refute @board.valid_placement?(@submarine, ["C1", "B1"])
   end
 
+  def test_ship_valid_placement_diagonal
+    refute @board.valid_placement?(@cruiser, ["A1", "B2", "C3"])
+    refute @board.valid_placement?(@submarine, ["C2", "D3"])
+  end
 
 end
