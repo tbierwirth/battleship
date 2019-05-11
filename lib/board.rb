@@ -49,4 +49,11 @@ class Board
     letters.uniq.count == 1
   end
 
+  def numbers_same?(coordinates)
+    numbers = []
+    coordinates.each do |coordinate|
+      numbers.push(coordinate[1])
+    end
+    numbers.uniq.count == 1
+  end
 end
