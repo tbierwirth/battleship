@@ -45,16 +45,12 @@ class Board
       if "yes" && 
     end
 
-  def split_coordinate(*coordinates)
-    coordinates.map do |coordinate|
-      coordinate.split(//)
-    end.flatten
-  end
-
-  def convert_letters(*letters)
-    letters.map do |letter|
-      letter.ord
+  def letters_same?(coordinates)
+    letters = []
+    coordinates.each do |coordinate|
+      letters.push(coordinate[0])
     end
+    letters.uniq.count == 1
   end
 
   def numbers_consecutive

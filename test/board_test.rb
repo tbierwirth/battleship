@@ -40,25 +40,9 @@ class BoardTest < MiniTest::Test
     refute @board.valid_placement?(@submarine, ["A2", "A3", "A4"])
   end
 
-  def test_coordinate_split
-    assert_equal ["A", "1", "A", "2"], @board.split_coordinate("A1", "A2")
-  end
-
-  def test_convert_letters_to_ordinals
-    assert_equal [65, 65, 65], @board.convert_letters("A", "A", "A")
-  end
-
-  def test_convert_to_integers
-    assert_equal [1, 2, 3], @board.convert_integers
-  end
-
-  # def test_horizontal_placement_consecutive
-  #   assert_equal "yay", @valid_array_index_placement
-  # end
-
-  def valid_placement
-
-
+  def test_letters_same
+    coordinates = ["A2", "A3", "A4"]
+    assert @board.letters_same?(coordinates)
   end
 
 end
