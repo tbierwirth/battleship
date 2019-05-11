@@ -69,4 +69,6 @@ class BoardTest < MiniTest::Test
     coordinates = ["A1", "B1", "C1"]
     assert @board.numbers_consecutive?(coordinates)
   end
+
+  
 end

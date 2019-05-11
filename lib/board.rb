@@ -72,5 +72,5 @@ class Board
     end
     numbers.each_cons(2).all? { |x,y| y == x + 1 }
   end
-
+  p 
 end
