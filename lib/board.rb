@@ -41,16 +41,29 @@ class Board
     coordinates.length == ship.length
   end
 
-  def split_coordinate(*coordinates)
-    coordinates.map do |coordinate|
-      coordinate.split(//)
-    end.flatten
-  end
+  # def split_coordinate(*coordinates)
+  #   coordinates.map do |coordinate|
+  #     coordinate.split(//)
+  #   end.flatten
+  # end
+  #
+  # def convert_to_ords(coordinates)
+  #   coordinates.map do |coordinate|
+  #     coordinate.ord
+  #   end
+  # end
 
-  def convert_letters(*letters)
-    letters.map do |letter|
-      letter.ord
+  def letters_same?(coordinates)
+    letters = []
+    coordinates.each do |coordinate|
+      letters.push(coordinate[0])
     end
+    letters.uniq.count == 1
   end
+  #
+  # def numbers_same?(coordinates)
+  #   nunbers = []
+  #   coordinates.each do |coordinate|
+  # end
 
 end
