@@ -60,15 +60,22 @@ class BoardTest < MiniTest::Test
     refute @board.numbers_same?(coordinates)
   end
 
-  def test_letters_are_consecutive
+  def test_letters_consecutive
     coordinates = ["A1", "B1", "C1"]
     assert @board.letters_consecutive?(coordinates)
   end
 
-  def test_numbers_are_consecutive
-    coordinates = ["A1", "B1", "C1"]
+  def test_numbers_consecutive
+    coordinates = ["A1", "A2", "A3"]
     assert @board.numbers_consecutive?(coordinates)
   end
 
-  
+  def test_ship_valid_placement_consecutive
+    refute @board.valid_placement?(@cruiser, ["A1", "A2", "A4"])
+    refute @board.valid_placement?(@submarine, ["A1", "C1"])
+    refute @board.valid_placement?(@cruiser, ["A3", "A2", "A1"])
+    refute @board.valid_placement?(@submarine, ["C1", "B1"])
+  end
+
+
 end
