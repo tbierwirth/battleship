@@ -62,6 +62,6 @@ class BoardTest < MiniTest::Test
 
   def test_letters_are_consecutive
     coordinates = ["A1", "B1", "C1"]
-    assert @board.letters_consecutive?
+    assert @board.letters_consecutive?(coordinates)
   end
 end
