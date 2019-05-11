@@ -1,11 +1,9 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'pry'
-
 require './lib/board'
 require './lib/cell'
 require './lib/ship'
-
 class BoardTest < MiniTest::Test
 
   def setup
@@ -31,10 +29,10 @@ class BoardTest < MiniTest::Test
 
   def test_valid_cell_coordinates
     assert @board.valid_coordinate?("A1")
-    assert_equal true, @board.valid_coordinate?("D4")
-    assert_equal false, @board.valid_coordinate?("A5")
-    assert_equal false, @board.valid_coordinate?("E1")
-    assert_equal false, @board.valid_coordinate?("A22")
+    assert @board.valid_coordinate?("D4")
+    refute @board.valid_coordinate?("A5")
+    refute @board.valid_coordinate?("E1")
+    refute @board.valid_coordinate?("A22")
   end
 
   def test_ship_length_to_valid_placements
@@ -47,9 +45,23 @@ class BoardTest < MiniTest::Test
     assert @board.letters_same?(coordinates)
   end
 
-  def test_letters_different
-    coordinates = ["A1", "A2", "B4"]
+  def test_letters_are_different
+    coordinates = ["B2", "A3", "A4"]
     refute @board.letters_same?(coordinates)
   end
 
+  def test_numbers_same
+    coordinates = ["A1", "B1", "C1"]
+    assert @board.numbers_same?(coordinates)
+  end
+
+  def test_numbers_are_different
+    coordinates = ["A2", "B1", "C1"]
+    refute @board.numbers_same?(coordinates)
+  end
+
+  def test_letters_are_consecutive
+    coordinates = ["A1", "B1", "C1"]
+    assert @board.letters_consecutive?(coordinates)
+  end
 end
