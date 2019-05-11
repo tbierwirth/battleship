@@ -26,18 +26,17 @@ class Cell
     end
   end
 
-  def render(player = false)
-    if fired_upon? && empty?
+  def render
+    if fire_upon? == true && empty? == true
       "M"
-    elsif fired_upon? && empty? == false && @ship.sunk? == false
+    elsif fire_upon? == false && empty? == true
       "H"
-    elsif fired_upon? == false && empty? == false && player
+    elsif @ship
       "S"
-    elsif fired_upon? && empty? == false && @ship.sunk?
+    elsif @ship.sunk?
       "X"
     else
       "."
     end
   end
-
 end

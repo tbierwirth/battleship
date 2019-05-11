@@ -35,8 +35,10 @@ class ShipTest < MiniTest::Test
     assert_equal 2, @cruiser.health
   end
 
+  def test_it_is_sunk
+    @submarine.hit
+    @submarine.hit
+    assert @submarine.sunk?
+  end
+
 end
-  # def test_its_cell_placement
-  #
-  #   assert_equal ["A1", "A2"], ship.location
-  # end
