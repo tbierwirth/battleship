@@ -38,7 +38,14 @@ class Board
   end
 
   def valid_placement?(ship, coordinates)
-    coordinates.length == ship.length
+    if coordinates.length == ship.length
+      letters_same?(coordinates) && numbers_consecutive?(coordinates)
+    elsif
+      letters_consecutive?(coordinates) && numbers_same?(coordinates)
+    else
+      return false
+    end
+
   end
 
   def letters_same?(coordinates)
@@ -72,5 +79,5 @@ class Board
     end
     numbers.each_cons(2).all? { |x,y| y == x + 1 }
   end
-  p 
+
 end
