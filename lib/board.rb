@@ -38,8 +38,12 @@ class Board
   end
 
   def valid_placement(ship, coordinates)
-    coordinates.length == ship.length
-  end
+    if valid_coordinate? && coordinates.length == ship.length
+      p "yes"
+    else
+      p "try again"
+      if "yes" && 
+    end
 
   def split_coordinate(*coordinates)
     coordinates.map do |coordinate|
@@ -51,6 +55,11 @@ class Board
     letters.map do |letter|
       letter.ord
     end
+  end
+
+  def numbers_consecutive
+
+
   end
   # def valid_array_index_placement
   #     arr = [65, 49, 65, 50, 65, 51]

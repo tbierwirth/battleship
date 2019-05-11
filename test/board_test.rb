@@ -51,10 +51,14 @@ class BoardTest < MiniTest::Test
   def test_convert_to_integers
     assert_equal [1, 2, 3], @board.convert_integers
   end
-  
+
   # def test_horizontal_placement_consecutive
   #   assert_equal "yay", @valid_array_index_placement
   # end
 
+  def valid_placement
+
+
+  end
 
 end
