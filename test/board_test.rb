@@ -96,6 +96,10 @@ class BoardTest < MiniTest::Test
     cell_3 = @board.cells["A3"]
 
     assert_equal @cruiser, cell_1.ship
+    assert_equal @cruiser, cell_2.ship
+    assert_equal @cruiser, cell_3.ship
+
+    assert_equal cell_3.ship, cell_2.ship
   end
 
 end
