@@ -32,11 +32,6 @@ class Board
 
   end
 
-  # def valid_coordinate?(cell)
-  #   coordinate_list = cells.keys
-  #   coordinate_list.include?(cell)
-  # end
-
   def valid_coordinate?(*coordinates)
     coordinate_list = cells.keys
     if coordinates.detect do |coordinate|
@@ -52,8 +47,8 @@ class Board
       letters_same?(coordinates) && numbers_consecutive?(coordinates)
     elsif
       letters_consecutive?(coordinates) && numbers_same?(coordinates)
-    else
-      return false
+    else false
+      puts "Please pick valid coordinates."
     end
   end
 
