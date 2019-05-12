@@ -82,9 +82,10 @@ class BoardTest < MiniTest::Test
     refute @board.valid_placement?(@submarine, ["C2", "D3"])
   end
 
-  def test_ship_assert_valid_placement
+  def test_ship_valid_placement
     assert true, @board.valid_placement?(@cruiser, ["B1", "C1", "D1"])
     assert true, @board.valid_placement?(@submarine, ["A1", "A2"])
+    assert false, @board.valid_placement?(@submarine, ["E1", "E2"])
   end
 
 end
