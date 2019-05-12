@@ -48,7 +48,7 @@ class Board
     elsif
       letters_consecutive?(coordinates) && numbers_same?(coordinates)
     else false
-      puts "Please pick valid coordinates."
+      # puts "Please pick valid coordinates."
     end
   end
 
@@ -82,6 +82,12 @@ class Board
       numbers << coordinate[1].to_i
     end
     numbers.each_cons(2).all? { |x,y| y == x + 1 }
+  end
+
+  def place(ship, coordinates)
+    if valid_placement?(ship, coordinates)
+      cell.place_ship(ship)
+    end
   end
 
 end
