@@ -32,20 +32,29 @@ class Board
 
   end
 
-  def valid_coordinate?(cell)
+  # def valid_coordinate?(cell)
+  #   coordinate_list = cells.keys
+  #   coordinate_list.include?(cell)
+  # end
+
+  def valid_coordinate?(*coordinates)
     coordinate_list = cells.keys
-    coordinate_list.include?(cell)
+    if coordinates.detect do |coordinate|
+      coordinate_list.include?(coordinate)
+    end
+      return true
+    else false
+    end
   end
 
   def valid_placement?(ship, coordinates)
-    if coordinates.length == ship.length
+    if valid_coordinate?(coordinates) && coordinates.length == ship.length
       letters_same?(coordinates) && numbers_consecutive?(coordinates)
     elsif
       letters_consecutive?(coordinates) && numbers_same?(coordinates)
     else
       return false
     end
-
   end
 
   def letters_same?(coordinates)
