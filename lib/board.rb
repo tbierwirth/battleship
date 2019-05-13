@@ -4,13 +4,6 @@ class Board
   attr_reader :cells
 
   def initialize
-    # look at .zip and [a, b, c, d] with [1..4]
-    # hsh = {}
-    # ["A1, A2, ... "D4].map do |coord|
-    #   hsh << "A1" => Cell.new("A1")
-    #   hsh << coord => Cell.new(coord)
-    # ("A".."D").to_a +> [A, B, C, D]
-    # end
     @cells = {
      "A1" => Cell.new("A1"),
      "A2" => Cell.new("A2"),
@@ -80,4 +73,16 @@ class Board
     numbers.each_cons(2).all? { |x,y| y == x + 1 }
   end
 
+  def render_board
+     board = "  1 2 3 4 \n"
+     ("A".."D").each do |letter|
+       board += "#{letter}"
+       (1..4).each do |number|
+         coordinate = "#{letter}#{number}"
+         board += " #{@cells[coordinate].render}"
+       end
+       board += " \n"
+     end
+     board
+  end
 end
