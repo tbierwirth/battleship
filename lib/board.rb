@@ -86,5 +86,32 @@ class Board
     end
   end
 
+  def render_board
+   board = "  1 2 3 4 \n"
+   ("A".."D").each do |letter|
+     board += "#{letter}"
+     (1..4).each do |number|
+       binding.pry
+       coordinate = "#{letter}#{number}"
+       board += " #{@cells[coordinate].render}"
+     end
+     board += " \n"
+   end
+   board
+ end
+
+ def render_board
+    board = "  1 2 3 4 \n"
+    ("A".."D").each do |letter|
+      board += "#{letter}"
+      (1..4).each do |number|
+        binding.pry
+        coordinate = "#{letter}#{number}"
+        board += " #{@cells[coordinate].render}"
+      end
+      board += " \n"
+    end
+    board
+  end
 
 end
