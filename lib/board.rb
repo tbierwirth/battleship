@@ -37,7 +37,8 @@ class Board
   def valid_coordinate?(*coordinates)
     coordinate_list = cells.keys
     if coordinates.detect do |coordinate|
-      coordinate_list.include?(coordinate) && @cells[coordinate].empty? == true
+      # Adding a check for empty? may have broken something?
+      coordinate_list.include?(coordinate) && @cells[coordinate].empty?
     end
       return true
     else false
@@ -46,10 +47,10 @@ class Board
 
   def valid_placement?(ship, coordinates)
     if valid_coordinate?(coordinates) && coordinates.length == ship.length
-      letters_same?(coordinates) && numbers_consecutive?(coordinates)
-    elsif
-      letters_consecutive?(coordinates) && numbers_same?(coordinates)
-    else false
+        letters_same?(coordinates) && numbers_consecutive?(coordinates)
+      elsif
+        letters_consecutive?(coordinates) && numbers_same?(coordinates)
+      else false
       # puts "Please pick valid coordinates."
     end
   end
@@ -87,9 +88,14 @@ class Board
   end
 
   def place(ship, coordinates)
-    coordinates.each do |coordinate|
-    @cells[coordinate].place_ship(ship)
-    end
+    ## Added valid_placement? conditional last night and it broke the test
+    # return nil if !valid_placement?(ship, coordinates) maybe?
+    # binding.pry
+    # if valid_placement?(ship, coordinates)
+      coordinates.each do |coordinate|
+        @cells[coordinate].place_ship(ship)
+      end
+    # end
   end
 
 end
