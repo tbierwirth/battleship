@@ -28,11 +28,11 @@ class BoardTest < MiniTest::Test
   end
 
   def test_valid_cell_coordinates
-    assert @board.valid_coordinate?("A1")
-    assert @board.valid_coordinate?("D4")
-    refute @board.valid_coordinate?("A5")
-    refute @board.valid_coordinate?("E1")
-    refute @board.valid_coordinate?("A22")
+    assert @board.valid_coordinate?(["A1"])
+    assert @board.valid_coordinate?(["D4"])
+    refute @board.valid_coordinate?(["A5"])
+    refute @board.valid_coordinate?(["E1"])
+    refute @board.valid_coordinate?(["A22"])
   end
 
   def test_ship_length_to_valid_placements
@@ -90,7 +90,6 @@ class BoardTest < MiniTest::Test
 
   def test_place_ship
     @board.place(@cruiser, ["A1", "A2", "A3"])
-
     cell_1 = @board.cells["A1"]
     cell_2 = @board.cells["A2"]
     cell_3 = @board.cells["A3"]
