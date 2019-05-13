@@ -19,5 +19,4 @@ class Ship
   def sunk?
     @health <= 0
   end
-
 end
