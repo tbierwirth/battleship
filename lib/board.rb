@@ -4,12 +4,6 @@ class Board
   attr_reader :cells
 
   def initialize
-    # look at .zip and [a, b, c, d] with [1..4]
-    # hsh = {}
-    # ["A1, A2, ... "D4].map do |coord|
-    #   hsh << "A1" => Cell.new("A1")
-    #   hsh << coord => Cell.new(coord)
-    # ("A".."D").to_a +> [A, B, C, D]
     @cells = {
      "A1" => Cell.new("A1"),
      "A2" => Cell.new("A2"),
@@ -91,5 +85,6 @@ class Board
       end
     end
   end
+
 
 end
