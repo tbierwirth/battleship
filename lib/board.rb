@@ -1,5 +1,6 @@
 require './lib/cell.rb'
 require './lib/ship.rb'
+require 'pry'
 
 class Board
   attr_reader :cells
@@ -36,7 +37,7 @@ class Board
   def valid_coordinate?(*coordinates)
     coordinate_list = cells.keys
     if coordinates.detect do |coordinate|
-      coordinate_list.include?(coordinate)
+      coordinate_list.include?(coordinate) && @cells[coordinate].empty? == true
     end
       return true
     else false
@@ -87,8 +88,7 @@ class Board
 
   def place(ship, coordinates)
     coordinates.each do |coordinate|
-      # require 'pry';binding.pry
-      @cells[coordinate].place_ship(ship)
+    @cells[coordinate].place_ship(ship)
     end
   end
 
