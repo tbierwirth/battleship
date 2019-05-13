@@ -1,4 +1,4 @@
-require './lib/cell.rb'
+require 'pry'
 
 class Board
   attr_reader :cells
@@ -25,20 +25,25 @@ class Board
 
   end
 
-  def valid_coordinate?(cell)
-    coordinate_list = cells.keys
-    coordinate_list.include?(cell)
+  def valid_coordinate?(coordinates)
+    coordinate_list = @cells.keys
+    result = coordinates.flatten.select do |coordinate|
+      coordinate_list.include?(coordinate) && @cells[coordinate].empty?
+    end
+    return false if result.empty?
+    result.length == coordinates.length
   end
 
   def valid_placement?(ship, coordinates)
-    if coordinates.length == ship.length
-      letters_same?(coordinates) && numbers_consecutive?(coordinates)
-    elsif
-      letters_consecutive?(coordinates) && numbers_same?(coordinates)
-    else
-      return false
-    end
+    if valid_coordinate?(coordinates) && coordinates.length == ship.length
 
+       x = (letters_consecutive?(coordinates) && numbers_same?(coordinates)) ||
+       (letters_same?(coordinates) && numbers_consecutive?(coordinates))
+       x
+    else
+      false
+      puts "Please pick valid coordinates."
+    end
   end
 
   def letters_same?(coordinates)
@@ -73,16 +78,13 @@ class Board
     numbers.each_cons(2).all? { |x,y| y == x + 1 }
   end
 
-  def render_board
-     board = "  1 2 3 4 \n"
-     ("A".."D").each do |letter|
-       board += "#{letter}"
-       (1..4).each do |number|
-         coordinate = "#{letter}#{number}"
-         board += " #{@cells[coordinate].render}"
-       end
-       board += " \n"
-     end
-     board
+  def place(ship, coordinates)
+    if valid_placement?(ship, coordinates)
+        coordinates.each do |coordinate|
+          @cells[coordinate].place_ship(ship)
+      end
+    end
   end
+
+
 end
