@@ -1,5 +1,3 @@
-require './lib/cell.rb'
-require './lib/ship.rb'
 require 'pry'
 
 class Board
@@ -12,7 +10,6 @@ class Board
     #   hsh << "A1" => Cell.new("A1")
     #   hsh << coord => Cell.new(coord)
     # ("A".."D").to_a +> [A, B, C, D]
-    # end
     @cells = {
      "A1" => Cell.new("A1"),
      "A2" => Cell.new("A2"),
@@ -34,24 +31,24 @@ class Board
 
   end
 
-  def valid_coordinate?(*coordinates)
-    coordinate_list = cells.keys
-    if coordinates.detect do |coordinate|
-      # Adding a check for empty? may have broken something?
+  def valid_coordinate?(coordinates)
+    coordinate_list = @cells.keys
+    result = coordinates.flatten.select do |coordinate|
       coordinate_list.include?(coordinate) && @cells[coordinate].empty?
     end
-      return true
-    else false
-    end
+    return false if result.empty?
+    result.length == coordinates.length
   end
 
   def valid_placement?(ship, coordinates)
     if valid_coordinate?(coordinates) && coordinates.length == ship.length
-        letters_same?(coordinates) && numbers_consecutive?(coordinates)
-      elsif
-        letters_consecutive?(coordinates) && numbers_same?(coordinates)
-      else false
-      # puts "Please pick valid coordinates."
+
+       x = (letters_consecutive?(coordinates) && numbers_same?(coordinates)) ||
+       (letters_same?(coordinates) && numbers_consecutive?(coordinates))
+       x
+    else
+      false
+      puts "Please pick valid coordinates."
     end
   end
 
@@ -88,14 +85,11 @@ class Board
   end
 
   def place(ship, coordinates)
-    ## Added valid_placement? conditional last night and it broke the test
-    # return nil if !valid_placement?(ship, coordinates) maybe?
-    # binding.pry
-    # if valid_placement?(ship, coordinates)
-      coordinates.each do |coordinate|
-        @cells[coordinate].place_ship(ship)
+    if valid_placement?(ship, coordinates)
+        coordinates.each do |coordinate|
+          @cells[coordinate].place_ship(ship)
       end
-    # end
+    end
   end
 
 end
