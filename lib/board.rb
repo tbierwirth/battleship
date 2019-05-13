@@ -1,4 +1,4 @@
-require './lib/cell.rb'
+require 'pry'
 
 class Board
   attr_reader :cells
@@ -10,7 +10,6 @@ class Board
     #   hsh << "A1" => Cell.new("A1")
     #   hsh << coord => Cell.new(coord)
     # ("A".."D").to_a +> [A, B, C, D]
-    # end
     @cells = {
      "A1" => Cell.new("A1"),
      "A2" => Cell.new("A2"),
@@ -32,13 +31,25 @@ class Board
 
   end
 
-  def valid_coordinate?(cell)
-    coordinate_list = cells.keys
-    coordinate_list.include?(cell)
+  def valid_coordinate?(coordinates)
+    coordinate_list = @cells.keys
+    result = coordinates.flatten.select do |coordinate|
+      coordinate_list.include?(coordinate) && @cells[coordinate].empty?
+    end
+    return false if result.empty?
+    result.length == coordinates.length
   end
 
   def valid_placement?(ship, coordinates)
-    coordinates.length == ship.length
+    if valid_coordinate?(coordinates) && coordinates.length == ship.length
+
+       x = (letters_consecutive?(coordinates) && numbers_same?(coordinates)) ||
+       (letters_same?(coordinates) && numbers_consecutive?(coordinates))
+       x
+    else
+      false
+      puts "Please pick valid coordinates."
+    end
   end
 
   def letters_same?(coordinates)
@@ -58,7 +69,6 @@ class Board
   end
 
   def letters_consecutive?(coordinates)
-    coordinates = ["A1", "B1", "C1"]
     letters = []
     coordinates.each do |coordinate|
       letters << coordinate[0].ord
@@ -67,12 +77,19 @@ class Board
   end
 
   def numbers_consecutive?(coordinates)
-    coordinates = ["A1", "A2", "A3"]
     numbers = []
     coordinates.each do |coordinate|
       numbers << coordinate[1].to_i
     end
     numbers.each_cons(2).all? { |x,y| y == x + 1 }
+  end
+
+  def place(ship, coordinates)
+    if valid_placement?(ship, coordinates)
+        coordinates.each do |coordinate|
+          @cells[coordinate].place_ship(ship)
+      end
+    end
   end
 
 end
