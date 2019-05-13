@@ -87,4 +87,16 @@ class BoardTest < MiniTest::Test
     assert true, @board.valid_placement?(@submarine, ["A1", "A2"])
   end
 
+  def test_board_renders_to_terminal
+    player = Board.new
+
+    expected = "  1 2 3 4 \n" +
+              "A . . . . \n" +
+              "B . . . . \n" +
+              "C . . . . \n" +
+              "D . . . . \n"
+
+    assert_equal expected, player.render_board
+
+  end
 end
