@@ -27,12 +27,12 @@ class Cell
     end
   end
 
-  def render(player = false)
+  def render(reveal = false)
     if fired_upon? && empty?
       "M"
     elsif fired_upon? && empty? == false && ship.sunk? == false
       "H"
-    elsif fired_upon? == false && empty? == false && player
+    elsif fired_upon? == false && empty? == false && reveal
       "S"
     elsif fired_upon? && empty? == false && @ship.sunk?
       "X"
