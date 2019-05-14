@@ -130,4 +130,42 @@ class BoardTest < MiniTest::Test
     assert_equal expected, @board.render_board(true)
   end
 
+  def test_board_renders_ship
+    @board.place(@cruiser, ["A1", "A2", "A3"])
+
+    expected = "  1 2 3 4 \n" +
+              "A S S S . \n" +
+              "B . . . . \n" +
+              "C . . . . \n" +
+              "D . . . . \n"
+
+    assert_equal expected, @board.render_board(true)
+  end
+
+  def test_board_renders_ship_and_fired_upon
+    @board.place(@cruiser, ["A1", "A2", "A3"])
+    @board.cells["A1"].fire_upon
+
+    expected = "  1 2 3 4 \n" +
+              "A H S S . \n" +
+              "B . . . . \n" +
+              "C . . . . \n" +
+              "D . . . . \n"
+
+    assert_equal expected, @board.render_board(true)
+  end
+
+  def test_board_renders_ship_and_fired_upon
+    @board.place(@cruiser, ["A1", "A2", "A3"])
+    @board.cells["A1"].fire_upon
+
+    expected = "  1 2 3 4 \n" +
+              "A H S S . \n" +
+              "B . . . . \n" +
+              "C . . . . \n" +
+              "D . . . . \n"
+
+    assert_equal expected, @board.render_board(true)
+  end
+
 end
