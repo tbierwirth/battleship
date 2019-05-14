@@ -107,8 +107,7 @@ class BoardTest < MiniTest::Test
     refute @board.valid_placement?(@submarine, ["A1", "B1"])
   end
 
-  def test_board_renders_to_terminal
-    player = Board.new
+  def test_board_renders
 
     expected = "  1 2 3 4 \n" +
               "A . . . . \n" +
@@ -116,7 +115,19 @@ class BoardTest < MiniTest::Test
               "C . . . . \n" +
               "D . . . . \n"
 
-    assert_equal expected, player.render_board
-
+    assert_equal expected, @board.render_board
   end
+
+  def test_board_renders_ship
+    @board.place(@cruiser, ["A1", "A2", "A3"])
+
+    expected = "  1 2 3 4 \n" +
+              "A S S S . \n" +
+              "B . . . . \n" +
+              "C . . . . \n" +
+              "D . . . . \n"
+
+    assert_equal expected, @board.render_board(true)
+  end
+
 end
