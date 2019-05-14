@@ -85,15 +85,14 @@ class Board
       end
     end
   end
-  
-  def render_board
+
+  def render_board(reveal = false)
    board = "  1 2 3 4 \n"
    ("A".."D").each do |letter|
      board += "#{letter}"
      (1..4).each do |number|
-       binding.pry
        coordinate = "#{letter}#{number}"
-       board += " #{@cells[coordinate].render}"
+       board += " #{@cells[coordinate].render(reveal)}"
      end
      board += " \n"
    end
