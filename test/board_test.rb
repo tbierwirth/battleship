@@ -141,4 +141,17 @@ class BoardTest < MiniTest::Test
     assert_equal expected, @board.render_board(true)
   end
 
+  def test_board_renders_sunk_ship
+    @board.place(@cruiser, ["A1", "A2", "A3"])
+    @board.cells["A1"].fire_upon
+    @board.cells["A2"].fire_upon
+    @board.cells["A3"].fire_upon
+    expected = "  1 2 3 4 \n" +
+              "A X X X . \n" +
+              "B . . . . \n" +
+              "C . . . . \n" +
+              "D . . . . \n"
+    assert_equal expected, @board.render_board(true)
+  end
+
 end
