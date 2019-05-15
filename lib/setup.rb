@@ -5,8 +5,8 @@ class Setup
   def initialize()
     @player = Board.new
     @computer = Board.new
-    @cruiser_placement = []
-    @sub_placement = []
+    # @cruiser_placement = []
+    # @sub_placement = []
   end
 
   def random_coordinate
@@ -21,7 +21,11 @@ class Setup
       coordinates.push(random_coordinate)
       coordinates = [] if coordinates.length > ship.length
     end
-    coordinates
+    @computer.place(ship, coordinates)
+  end
+
+  def player_choose_coordinates(ship)
+    coordinates = gets.chomp
   end
 
 end
