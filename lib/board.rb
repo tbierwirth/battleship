@@ -42,7 +42,7 @@ class Board
        x
     else
       false
-      puts "Please pick valid coordinates."
+      # puts "Please pick valid coordinates."
     end
   end
 
