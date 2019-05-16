@@ -33,6 +33,7 @@ def game
         new_turn.player_take_shot
         new_turn.computer_take_shot
         new_turn.display_results
+        sleep(2)
       end
       if @computer_cruiser.sunk? && @computer_submarine.sunk?
         puts "You won!"
