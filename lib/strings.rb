@@ -1,10 +1,9 @@
-class Strings
+class String
 
   def welcome
     puts "Welcome to BATTLESHIP!!"
     puts "Do you want to play? (play/quit):"
     puts "To play type 'p', to quit type 'q'"
-    gets.chomp
   end
 
   def computer_places_ships
@@ -39,11 +38,18 @@ class Strings
     puts "Choose a coordinate to hit!"
   end
 
-  def feedback_response
-    ### gigantic if statement for the return value of coordinate shot choice.
-    # if H, puts "Hit!"
-    # if M, puts "Miss!"
-    # if X, puts "Sunk!"
+  def line_break
+    puts '======================'
+  end
+
+  def feedback_response_fire_upon
+    if
+      puts "Miss!"
+    elsif conditional
+      puts "Hit!"
+    elsif conditional
+      puts "Sunk!"
+    end
   end
 
   def end_message
@@ -51,6 +57,7 @@ class Strings
       puts "I won!"
     elsif computer.ship.sunk? == true
       puts "You won!"
+    end
   end
 
 end

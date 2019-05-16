@@ -1,7 +1,7 @@
 require 'pry'
 
 class Setup
-
+  attr_reader :player, :computer
   def initialize()
     @player = Board.new
     @computer = Board.new
@@ -27,5 +27,4 @@ class Setup
   def player_choose_coordinates(ship)
     coordinates = gets.chomp
   end
-
 end
