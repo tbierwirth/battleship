@@ -61,5 +61,4 @@ class Turn
     end
     @shoot_computer_cell.fire_upon
   end
-
 end
