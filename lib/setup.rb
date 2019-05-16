@@ -1,6 +1,3 @@
-require 'pry'
-require './lib/board'
-
 class Setup
   attr_reader :player, :computer
 
@@ -29,7 +26,7 @@ class Setup
     raw_coordinates = gets.chomp.upcase
     coordinates = raw_coordinates.split(" ")
     until @player.place(ship, coordinates) != nil
-      raw_coordinates = gets.chomp
+      raw_coordinates = gets.chomp.upcase
       coordinates = raw_coordinates.split(" ")
     end
 
