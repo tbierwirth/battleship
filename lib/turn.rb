@@ -10,6 +10,7 @@ class Turn
   end
 
   def render_boards
+    system 'clear'
     print "=============COMPUTER BOARD=============\n"
     print @computer.render_board
     print "==============PLAYER BOARD==============\n"
@@ -43,12 +44,12 @@ class Turn
   end
 
   def player_take_shot
-    puts "Please choose a coordinate to fire on"
-    @shoot_computer_cell = gets.chomp
+    puts "Please choose a coordinate to fire on."
+    @shoot_computer_cell = gets.chomp.upcase
     @shoot_computer_cell = @computer.cells[@shoot_computer_cell]
     until @shoot_computer_cell.fired_upon? == false
-      print "Please pick a coordinate you haven't fired on"
-      @shoot_computer_cell = gets.chomp
+      print "Please pick a coordinate a new coordinate."
+      @shoot_computer_cell = gets.chomp.upcase
     end
     @shoot_computer_cell.fire_upon
   end
