@@ -23,23 +23,18 @@ input = gets.chomp
     @setup.random_placement(@computer_submarine)
     # Player places ship
     @setup.player_choose_coordinates(@player_cruiser)
+    # Render board to show first ship
     @setup.player_choose_coordinates(@player_submarine)
-    new_turn = Turn.new(@computer, @player)
-    new_turn.render_boards
-    new_turn.computer_take_shot
-    new_turn.player_take_shot
-    new_turn.render_boards
+    until @computer_cruiser.sunk? && @computer_submarine.sunk? || @player_cruiser.sunk? && @player_submarine.sunk?
+      new_turn = Turn.new(@computer, @player)
+      new_turn.render_boards
+      new_turn.player_take_shot
+      new_turn.computer_take_shot
+      new_turn.display_results
+      sleep(1)
+    end
     # Create board for player and ask for coordinates to place their ships
     # Start the game/initialize the Turn
   elsif input == 'q'
     # Stop the game
   end
-
-
-  # until game_is_over?
-      # take_turn
-  # end
-
-  # def take_turn
-  #   Turn.new(computer, player)
-  # end
