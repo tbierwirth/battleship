@@ -24,4 +24,15 @@ class Setup
     @computer.place(ship, coordinates)
   end
 
+  def player_choose_coordinates(ship)
+    puts "Please place your #{ship.name}."
+    raw_coordinates = gets.chomp
+    coordinates = raw_coordinates.split(" ")
+    until @player.place(ship, coordinates) != nil
+      raw_coordinates = gets.chomp
+      coordinates = raw_coordinates.split(" ")
+    end
+
+  end
+
 end
