@@ -29,7 +29,7 @@ class Setup
     raw_coordinates = gets.chomp.upcase
     coordinates = raw_coordinates.split(" ")
     until @player.place(ship, coordinates) != nil
-      raw_coordinates = gets.chomp
+      raw_coordinates = gets.chomp.upcase
       coordinates = raw_coordinates.split(" ")
     end
 
