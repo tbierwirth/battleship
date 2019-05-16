@@ -42,7 +42,6 @@ class Board
        x
     else
       false
-      puts "Please pick valid coordinates."
     end
   end
 
@@ -83,17 +82,18 @@ class Board
         coordinates.each do |coordinate|
           @cells[coordinate].place_ship(ship)
       end
+    else
+      puts "Please pick valid coordinates."
     end
   end
-  
-  def render_board
+
+  def render_board(reveal = false)
    board = "  1 2 3 4 \n"
    ("A".."D").each do |letter|
      board += "#{letter}"
      (1..4).each do |number|
-       binding.pry
        coordinate = "#{letter}#{number}"
-       board += " #{@cells[coordinate].render}"
+       board += " #{@cells[coordinate].render(reveal)}"
      end
      board += " \n"
    end
