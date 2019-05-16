@@ -18,4 +18,9 @@ class ComputerTest < MiniTest::Test
     assert_equal [], @setup.random_coordinate
   end
 
+  def test_randomize_placement_coordinates
+    assert_equal [], @setup.random_placement(@cruiser)
+  end
+
+
 end
