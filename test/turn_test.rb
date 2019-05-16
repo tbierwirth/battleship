@@ -21,4 +21,20 @@ class TurnTest < MiniTest::Test
     assert_instance_of Board, @player
   end
 
+  def test_render_boards
+    player = "  1 2 3 4 \n" +
+              "A . . . . \n" +
+              "B . . . . \n" +
+              "C . . . . \n" +
+              "D . . . . \n"
+    computer = "  1 2 3 4 \n" +
+              "A . . . . \n" +
+              "B . . . . \n" +
+              "C . . . . \n" +
+              "D . . . . \n"
+
+    assert_equal player, @player.render_board(true)
+    assert_equal computer, @player.render_board
+  end
+
 end
