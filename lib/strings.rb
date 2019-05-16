@@ -30,26 +30,29 @@ class String
   end
 
   def place_submarine
-    puts "Enter the squares for the Submarine (2 spaces):"
-    gets.chomp
+    puts "Enter the squares for the Submarine (2 spaces)"
   end
 
   def choose_coordinate
     puts "Choose a coordinate to hit!"
   end
 
-  def line_break
-    puts '======================'
+  def computer_line
+    puts '================COMPUTER BOARD=================='
   end
 
-  def feedback_response_fire_upon
-    if
-      puts "Miss!"
-    elsif conditional
-      puts "Hit!"
-    elsif conditional
-      puts "Sunk!"
-    end
+  def player_line
+    puts '=================PLAYER BOARD=================='
+  end
+
+  def example_board
+    puts "This is what your board looks like!"
+    puts "  1 2 3 4"
+    puts "A . . . ."
+    puts "B . . . ."
+    puts "C . . . ."
+    puts "D . . . ."
+
   end
 
   def end_message
@@ -59,5 +62,4 @@ class String
       puts "You won!"
     end
   end
-
 end
