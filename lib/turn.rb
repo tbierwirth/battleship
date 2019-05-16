@@ -26,5 +26,15 @@ class Turn
     end
   end
 
+  def player_take_shot
+    puts "Please choose a coordinate to fire on"
+    coordinate = gets.chomp
+    @computer.cells[coordinate].fire_upon
+    if @computer.cells[coordinate].empty?
+      puts "You missed!"
+    else
+      puts "You hit the computer on #{coordinate}."
+    end
+  end
 
 end
