@@ -1,12 +1,12 @@
 require 'pry'
+require './lib/board'
 
 class Setup
+  attr_reader :player, :computer
 
   def initialize()
     @player = Board.new
     @computer = Board.new
-    # @cruiser_placement = []
-    # @sub_placement = []
   end
 
   def random_coordinate
@@ -14,18 +14,5 @@ class Setup
     # "#{rand(65..Board_Size).chr}#{rand(1..Board_Size)}"
   end
 
-  def random_placement(ship)
-    coordinates = []
-    coordinates.push(random_coordinate)
-    until @computer.valid_placement?(ship, coordinates) do
-      coordinates.push(random_coordinate)
-      coordinates = [] if coordinates.length > ship.length
-    end
-    @computer.place(ship, coordinates)
-  end
-
-  def player_choose_coordinates(ship)
-    coordinates = gets.chomp
-  end
 
 end
