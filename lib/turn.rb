@@ -1,30 +1,40 @@
+require './lib/board'
+
 class Turn
-attr_reader
-@string = String.new
-@player = Board.new
-@computer = Board.new
 
-@string.welcome
-@computer.render_board
-@computer.random_placement
-@string.computer_places_ships
+  def initialize(computer, player)
+    #boards
+    @computer = computer
+    @player = player
+  end
 
-player.render_board
+  def render_boards
+    print @computer.render_board
+    print @player.render_board(true)
+  end
 
-if @coordinates.valid_placement?
- p @string.is_valid_coordinate
-else
+  def computer_take_shot
+    random_cell = @player.cells.values.sample
+    until random_cell.fired_upon? == false
+      random_cell = @player.cells.values.sample
+    end
+    random_cell.fire_upon
+    if random_cell.empty?
+      puts "The computer missed you."
+    else
+      puts "The computer hit you!"
+    end
+  end
 
-if coordinates.valid_placement?
-p @string.is_valid_coordinate
-else
-   puts "Try again!" gets.chomp
+  def player_take_shot
+    puts "Please choose a coordinate to fire on"
+    coordinate = gets.chomp
+    @computer.cells[coordinate].fire_upon
+    if @computer.cells[coordinate].empty?
+      puts "You missed!"
+    else
+      puts "You hit the computer on #{coordinate}."
+    end
+  end
+
 end
- @player.render_board
-end
-
-##### system clear
-### sleep (2)
-these are two options to use they can be called on there own without the use of @ or .
-
-return the the main menu once the game has ended.

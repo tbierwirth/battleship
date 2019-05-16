@@ -22,9 +22,6 @@ class ComputerTest < MiniTest::Test
     assert_equal [], @setup.random_placement(@cruiser)
   end
 
-  # def test_player_choose_coordinates
-  #   assert_equal [], @setup.player_choose_coordinates
-  # end
 
 
 end

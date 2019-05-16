@@ -43,7 +43,6 @@ class Board
        x
     else
       false
-      # puts "Please pick valid coordinates."
     end
   end
 
@@ -84,6 +83,8 @@ class Board
         coordinates.each do |coordinate|
           @cells[coordinate].place_ship(ship)
       end
+    else
+      puts "Please pick valid coordinates."
     end
   end
 
