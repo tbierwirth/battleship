@@ -43,13 +43,21 @@ class Turn
     @shoot_player_cell.fire_upon
   end
 
+  def player_pick_shot
+    @shoot_computer_cell = gets.chomp.upcase
+    until @computer.cells.keys.include?(@shoot_computer_cell)
+      puts "Please pick a valid coordinate."
+      @shoot_computer_cell = gets.chomp.upcase
+    end
+    @shoot_computer_cell = @computer.cells[@shoot_computer_cell]
+  end
+
   def player_take_shot
     puts "Please choose a coordinate to fire on."
-    @shoot_computer_cell = gets.chomp.upcase
-    @shoot_computer_cell = @computer.cells[@shoot_computer_cell]
+    player_pick_shot
     until @shoot_computer_cell.fired_upon? == false
-      print "Please pick a coordinate a new coordinate."
-      @shoot_computer_cell = gets.chomp.upcase
+      puts "Please pick a coordinate a new coordinate."
+      player_pick_shot
     end
     @shoot_computer_cell.fire_upon
   end
