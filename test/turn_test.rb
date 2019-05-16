@@ -17,6 +17,8 @@ class TurnTest < MiniTest::Test
 
   def test_instance
     assert_instance_of Turn, @new_turn
+    assert_instance_of Board, @computer
+    assert_instance_of Board, @player
   end
 
 end
