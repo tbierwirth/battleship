@@ -14,5 +14,14 @@ class Setup
     # "#{rand(65..Board_Size).chr}#{rand(1..Board_Size)}"
   end
 
+  def random_placement(ship)
+    coordinates = []
+    coordinates.push(random_coordinate)
+    until @computer.valid_placement?(ship, coordinates) do
+      coordinates.push(random_coordinate)
+      coordinates = [] if coordinates.length > ship.length
+    end
+    @computer.place(ship, coordinates)
+  end
 
 end
