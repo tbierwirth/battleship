@@ -17,20 +17,20 @@ class Turn
   end
 
   def display_results
-    if @shoot_player_cell.ship.sunk?
-      puts "The computer sunk your #{@shoot_player_cell.ship}."
-    elsif @shoot_player_cell.empty?
+    if @shoot_player_cell.empty?
       puts "The computer missed you."
-    else
+    elsif @shoot_player_cell.empty? == false && @shoot_player_cell.ship.sunk? == false
       puts "The computer hit you on #{@shoot_player_cell.coordinate}!"
+    else
+      puts "The computer sunk your #{@shoot_player_cell.ship.name}."
     end
 
-    if @shoot_computer_cell.ship.sunk?
-      puts "You sunk the computer's #{@shoot_computer_cell.ship}!"
-    elsif @shoot_computer_cell.empty?
-      puts "You missed!"
+    if @shoot_computer_cell.empty?
+      puts "You missed the computer."
+    elsif @shoot_computer_cell.empty? == false && @shoot_computer_cell.ship.sunk? == false
+      puts "You hit the computer on #{@shoot_computer_cell.coordinate}!"
     else
-      puts "You hit the computer on #{@shoot_computer_cell.coordinate}."
+      puts "You sunk the computer's #{@shoot_computer_cell.ship.name}."
     end
   end
 
