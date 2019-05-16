@@ -1,6 +1,3 @@
-require 'pry'
-require './lib/board'
-
 class Setup
   attr_reader :player, :computer
 
